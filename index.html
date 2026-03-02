@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Oracle's Prophecy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="stars-container"></div>
+
+    <div id="intro-screen">
+        <div class="obsidian-plaque">
+            <h1 class="oracle-title fade-in-text delay-1">The Oracle Speaks</h1>
+            <p class="mystic-text fade-in-text delay-2">I sense a disturbance in the weave of fate... The stars have aligned in a pattern not seen since the ancient days.</p>
+            <p class="question fade-in-text delay-3">Tell me, traveler... Is today the anniversary of your birth?</p>
+            
+            <div class="decision-buttons fade-in-text delay-4">
+                <button id="btn-yes" class="royal-btn">Yes, it is</button>
+                <button id="btn-no" class="royal-btn secondary">No</button>
+            </div>
+            <p id="oracle-rejection" class="hidden">Then step back into the shadows. The fates have no words for you today.</p>
+        </div>
+    </div>
+
+    <div id="magical-loader" class="hidden">
+        <div class="mystic-spinner">
+            <div class="ring outer-ring"></div>
+            <div class="ring inner-ring"></div>
+            <div class="core-glow"></div>
+        </div>
+        <p class="loading-text">Weaving the magic of the ancients...</p>
+    </div>
+
+    <div id="main-content" class="hidden">
+        <h1 class="title">Select Your Prophecy</h1>
+        <div class="scrolls-container">
+            <div class="scroll-box" data-type="success">
+                <div class="scroll-icon">📜</div>
+                <p>Prophecy of Success</p>
+            </div>
+            <div class="scroll-box" data-type="health">
+                <div class="scroll-icon">📜</div>
+                <p>Prophecy of Health</p>
+            </div>
+            <div class="scroll-box" data-type="life">
+                <div class="scroll-icon">📜</div>
+                <p>Prophecy of Life</p>
+            </div>
+        </div>
+        
+        <button id="grand-destiny-btn" class="hidden">Embrace Your Grand Destiny</button>
+    </div>
+
+    <div id="prophecy-overlay" class="hidden">
+        <div class="mystical-scroll">
+            <button id="close-btn" class="hidden">✖</button>
+            
+            <div id="mystical-seal" class="mystical-seal">
+                <p>Touch<br>Orb</p>
+            </div>
+
+            <div class="scroll-content hidden" id="scroll-text-wrapper">
+                <p id="typewriter-text"></p><span class="cursor" id="cursor">|</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
