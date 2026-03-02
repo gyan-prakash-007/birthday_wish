@@ -6,9 +6,8 @@ body {
     background: #08030b; 
     color: #e0d0c0; 
     font-family: 'Cormorant Garamond', serif;
-    /* FIX: Dynamic viewport height prevents mobile overlap */
-    height: 100vh; 
-    height: 100dvh; 
+    height: 100vh; /* Fallback */
+    height: 100dvh; /* Mobile dynamic viewport fix */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,6 +31,7 @@ body {
     background: linear-gradient(135deg, #150a1f, #08030b);
     border: 2px solid #d4af37; 
     padding: 50px 40px; border-radius: 10px; max-width: 600px; text-align: center;
+    /* Levitation Animation */
     animation: levitatePlaque 6s ease-in-out infinite;
 }
 
@@ -82,19 +82,7 @@ body {
 .outer-ring { border-top-color: #d4af37; border-bottom-color: #d4af37; animation: spin 2s linear infinite; }
 .inner-ring { inset: 15px; border-left-color: #9b59b6; border-right-color: #9b59b6; animation: spinReverse 1.5s linear infinite; }
 .core-glow { position: absolute; inset: 30px; background: radial-gradient(circle, #e0b0ff, #7b1fa2); border-radius: 50%; box-shadow: 0 0 20px #e0b0ff; animation: pulseGlow 1.5s alternate infinite; }
-
-.loading-text { 
-    font-family: 'Cinzel', serif; 
-    font-size: 1.2rem; 
-    color: #d4af37; 
-    letter-spacing: 2px; 
-    animation: pulseGlow 1.5s alternate infinite; 
-    /* FIX: Force text wrapping and centering */
-    text-align: center;
-    max-width: 85%;
-    margin: 0 auto;
-    line-height: 1.4;
-}
+.loading-text { font-family: 'Cinzel', serif; font-size: 1.2rem; color: #d4af37; letter-spacing: 2px; animation: pulseGlow 1.5s alternate infinite; }
 
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 @keyframes spinReverse { 0% { transform: rotate(360deg); } 100% { transform: rotate(0deg); } }
@@ -131,4 +119,56 @@ body {
     display: flex; justify-content: center; align-items: center; z-index: 200; padding: 20px;
 }
 .mystical-scroll {
-    position: relative; width: 100%; max-width: 60
+    position: relative; width: 100%; max-width: 600px; min-height: 350px;
+    background: linear-gradient(135deg, #2a1b38, #150a1f);
+    box-shadow: inset 0 0 40px #000, 0 0 30px #7b1fa2;
+    border: 1px solid #d4af37; padding: 60px 40px; color: #e0d0c0;
+    display: flex; justify-content: center; align-items: center; flex-direction: column;
+}
+
+.mystical-seal {
+    width: 90px; height: 90px; background: radial-gradient(circle, #7b1fa2, #4a148c); border-radius: 50%;
+    border: 2px solid #d4af37; box-shadow: 0 0 20px #9b59b6, inset 0 0 15px #000;
+    display: flex; justify-content: center; align-items: center; text-align: center;
+    color: #d4af37; font-family: 'Cinzel', serif; font-size: 1rem; cursor: pointer; transition: all 0.5s ease;
+}
+.mystical-seal:hover { transform: scale(1.1); box-shadow: 0 0 40px #d4af37; }
+.mystical-seal.broken { transform: scale(2); opacity: 0; pointer-events: none; }
+
+#close-btn {
+    position: absolute; top: 15px; right: 20px; background: none; border: none;
+    font-size: 1.5rem; color: #d4af37; cursor: pointer; transition: 0.3s;
+}
+#close-btn:hover { color: #fff; text-shadow: 0 0 10px #fff; }
+.scroll-content { font-size: 1.6rem; line-height: 1.6; text-align: center; width: 100%; }
+.cursor { font-weight: bold; animation: blink 0.8s infinite; color: #d4af37; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* =========================================
+   📱 MOBILE RESPONSIVENESS (PHONES)
+========================================= */
+@media (max-width: 600px) {
+    .obsidian-plaque { padding: 30px 20px; margin: 10px; }
+    .oracle-title { font-size: 2rem; }
+    .mystic-text { font-size: 1.1rem; }
+    .question { font-size: 1.2rem; }
+    
+    .decision-buttons { flex-direction: column; gap: 15px; }
+    .royal-btn { width: 100%; font-size: 1.1rem; }
+
+    /* Scene 2 fixes */
+    .mystic-spinner { width: 80px; height: 80px; margin-bottom: 20px; }
+    .core-glow { inset: 25px; }
+    .loading-text { font-size: 1rem; text-align: center; padding: 0 20px; line-height: 1.5; }
+
+    .title { font-size: 2rem; }
+    .scrolls-container { gap: 15px; }
+    .scroll-box { width: 130px; padding: 20px 15px; }
+    .scroll-icon { font-size: 2.5rem; }
+    
+    #grand-destiny-btn { font-size: 1.1rem; padding: 12px 20px; width: 90%; }
+
+    .mystical-scroll { padding: 40px 20px; min-height: auto; }
+    .scroll-content { font-size: 1.2rem; line-height: 1.5; }
+    .mystical-seal { width: 80px; height: 80px; font-size: 0.9rem; }
+}
