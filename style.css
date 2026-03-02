@@ -6,7 +6,8 @@ body {
     background: #08030b; 
     color: #e0d0c0; 
     font-family: 'Cormorant Garamond', serif;
-    height: 100vh;
+    height: 100vh; /* Fallback */
+    height: 100dvh; /* Mobile dynamic viewport fix */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,11 +31,10 @@ body {
     background: linear-gradient(135deg, #150a1f, #08030b);
     border: 2px solid #d4af37; 
     padding: 50px 40px; border-radius: 10px; max-width: 600px; text-align: center;
-    /* Levitation Animation attached here */
+    /* Levitation Animation */
     animation: levitatePlaque 6s ease-in-out infinite;
 }
 
-/* Levitation & Breathing Aura */
 @keyframes levitatePlaque {
     0%, 100% { 
         transform: translateY(0); 
@@ -46,13 +46,7 @@ body {
     }
 }
 
-/* Ethereal Text Fade-In Classes */
-.fade-in-text {
-    opacity: 0;
-    animation: etherealFade 2.5s ease forwards;
-}
-
-/* Staggering the timing so they appear one after another */
+.fade-in-text { opacity: 0; animation: etherealFade 2.5s ease forwards; }
 .delay-1 { animation-delay: 0.5s; }
 .delay-2 { animation-delay: 2.5s; }
 .delay-3 { animation-delay: 5.5s; }
@@ -73,103 +67,4 @@ body {
     background: transparent; color: #d4af37; border: 1px solid #d4af37;
     cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px;
 }
-.royal-btn:hover { background: rgba(212, 175, 55, 0.1); box-shadow: 0 0 15px rgba(212, 175, 55, 0.5); transform: translateY(-2px); }
-.royal-btn.secondary { color: #888; border-color: #555; }
-.royal-btn.secondary:hover { background: rgba(255, 255, 255, 0.05); box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); }
-#oracle-rejection { color: #d32f2f; font-size: 1.2rem; margin-top: 20px; font-family: 'Cinzel', serif; }
-
-/* --- Scene 2: Magical Loader --- */
-#magical-loader {
-    z-index: 100; display: flex; flex-direction: column; justify-content: center; align-items: center;
-    transition: opacity 1s ease; position: fixed; inset: 0; background: #08030b;
-}
-.mystic-spinner { position: relative; width: 100px; height: 100px; margin-bottom: 30px; }
-.ring { position: absolute; inset: 0; border-radius: 50%; border: 2px solid transparent; }
-.outer-ring { border-top-color: #d4af37; border-bottom-color: #d4af37; animation: spin 2s linear infinite; }
-.inner-ring { inset: 15px; border-left-color: #9b59b6; border-right-color: #9b59b6; animation: spinReverse 1.5s linear infinite; }
-.core-glow { position: absolute; inset: 30px; background: radial-gradient(circle, #e0b0ff, #7b1fa2); border-radius: 50%; box-shadow: 0 0 20px #e0b0ff; animation: pulseGlow 1.5s alternate infinite; }
-.loading-text { font-family: 'Cinzel', serif; font-size: 1.2rem; color: #d4af37; letter-spacing: 2px; animation: pulseGlow 1.5s alternate infinite; }
-
-@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-@keyframes spinReverse { 0% { transform: rotate(360deg); } 100% { transform: rotate(0deg); } }
-@keyframes pulseGlow { 0% { opacity: 0.6; transform: scale(0.9); } 100% { opacity: 1; transform: scale(1.1); } }
-
-/* --- Scene 3: Prophecies --- */
-#main-content { font-family: 'Cinzel', serif; text-align: center; width: 100%; padding: 20px; z-index: 10; animation: fadeIn 2s ease forwards; }
-.title { color: #d4af37; margin-bottom: 40px; font-size: 2.5rem; text-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
-.scrolls-container { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 30px; }
-.scroll-box {
-    background: linear-gradient(145deg, #150a1f, #08030b);
-    border: 1px solid #7b1fa2; border-radius: 5px; padding: 30px 20px;
-    width: 150px; cursor: pointer; transition: all 0.4s ease;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.8);
-}
-.scroll-box:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(123, 31, 162, 0.6); border-color: #d4af37; }
-.scroll-box.opened { border-color: #333; opacity: 0.4; pointer-events: none; }
-.scroll-icon { font-size: 3.5rem; margin-bottom: 15px; text-shadow: 0 0 10px rgba(255,255,255,0.2); }
-.scroll-box p { font-weight: 600; color: #e0d0c0; font-size: 0.9rem; letter-spacing: 1px; }
-
-#grand-destiny-btn {
-    font-family: 'Cinzel', serif; font-size: 1.5rem; padding: 15px 30px;
-    background: transparent; color: #d4af37; border: 2px solid #d4af37; cursor: pointer;
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); inset 0 0 10px rgba(212, 175, 55, 0.2);
-    animation: pulseDestiny 2s infinite alternate; margin-top: 20px; transition: all 0.3s ease;
-}
-#grand-destiny-btn:hover { background: rgba(212, 175, 55, 0.1); }
-@keyframes pulseDestiny { from { box-shadow: 0 0 10px rgba(212, 175, 55, 0.3); } to { box-shadow: 0 0 30px rgba(212, 175, 55, 0.8); } }
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-/* --- Scene 4: Reading Overlay & Seal --- */
-#prophecy-overlay {
-    position: fixed; inset: 0; background: rgba(0, 0, 0, 0.9);
-    display: flex; justify-content: center; align-items: center; z-index: 200; padding: 20px;
-}
-.mystical-scroll {
-    position: relative; width: 100%; max-width: 600px; min-height: 350px;
-    background: linear-gradient(135deg, #2a1b38, #150a1f);
-    box-shadow: inset 0 0 40px #000, 0 0 30px #7b1fa2;
-    border: 1px solid #d4af37; padding: 60px 40px; color: #e0d0c0;
-    display: flex; justify-content: center; align-items: center; flex-direction: column;
-}
-
-.mystical-seal {
-    width: 90px; height: 90px; background: radial-gradient(circle, #7b1fa2, #4a148c); border-radius: 50%;
-    border: 2px solid #d4af37; box-shadow: 0 0 20px #9b59b6, inset 0 0 15px #000;
-    display: flex; justify-content: center; align-items: center; text-align: center;
-    color: #d4af37; font-family: 'Cinzel', serif; font-size: 1rem; cursor: pointer; transition: all 0.5s ease;
-}
-.mystical-seal:hover { transform: scale(1.1); box-shadow: 0 0 40px #d4af37; }
-.mystical-seal.broken { transform: scale(2); opacity: 0; pointer-events: none; }
-
-#close-btn {
-    position: absolute; top: 15px; right: 20px; background: none; border: none;
-    font-size: 1.5rem; color: #d4af37; cursor: pointer; transition: 0.3s;
-}
-#close-btn:hover { color: #fff; text-shadow: 0 0 10px #fff; }
-.scroll-content { font-size: 1.6rem; line-height: 1.6; text-align: center; width: 100%; }
-.cursor { font-weight: bold; animation: blink 0.8s infinite; color: #d4af37; }
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-
-/* =========================================
-   📱 MOBILE RESPONSIVENESS (PHONES)
-========================================= */
-@media (max-width: 600px) {
-    .obsidian-plaque { padding: 30px 20px; margin: 10px; }
-    .oracle-title { font-size: 2rem; }
-    .mystic-text { font-size: 1.1rem; }
-    .question { font-size: 1.2rem; }
-    
-    .decision-buttons { flex-direction: column; gap: 15px; }
-    .royal-btn { width: 100%; font-size: 1.1rem; }
-
-    .title { font-size: 2rem; }
-    .scrolls-container { gap: 15px; }
-    .scroll-box { width: 130px; padding: 20px 15px; }
-    .scroll-icon { font-size: 2.5rem; }
-    
-    #grand-destiny-btn { font-size: 1.1rem; padding: 12px 20px; width: 90%; }
-
-    .mystical-scroll { padding: 40px 20px; min-height: auto; }
-    .scroll-content { font-size: 1.2rem; line-height: 1.5; }
-    .mystical-seal { width: 80px; height: 80px; font-size: 0.9rem; }
-}
+.royal-btn:hover { background: rgba(212, 175, 55, 0.1); box
